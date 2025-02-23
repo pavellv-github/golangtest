@@ -25,9 +25,11 @@ func main() {
 
 	dataGuest := struct {
 		firstName     string
+		lastName      string
 		age, dayVisit int
 	}{
 		"guest name",
+		"",
 		22,
 		29,
 	}
