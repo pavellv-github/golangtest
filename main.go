@@ -5,20 +5,32 @@ import (
 )
 
 func main() {
-	for i := 0; i < 10; i++ {
-		fmt.Println(i)
+	type User struct {
+		firstName string
+		lastName  string
+		age       int
+		birthDate string
 	}
 
-	switch result := 8; {
-	case result == 12:
-		fmt.Println("a")
-	case result == 10-2:
-		fmt.Println("b")
-	case result > 100:
-		fmt.Println("c")
-	case result%2 == 12:
-		fmt.Println("e")
-	default:
-		fmt.Println(result)
+	dataUser := User{"Pavel", "lysov", 29, "15/07/1995"}
+	fmt.Println("im:", dataUser.firstName, dataUser.age, dataUser.lastName, dataUser.birthDate)
+
+	fmt.Println("Hello my age", dataUser.age)
+
+	dataUser.age = 12
+	fmt.Println("Hello my age", dataUser.age)
+
+	dataUser.firstName = "asd"
+	fmt.Println(dataUser)
+
+	dataGuest := struct {
+		firstName     string
+		age, dayVisit int
+	}{
+		"guest name",
+		22,
+		29,
 	}
+
+	fmt.Println(dataGuest)
 }
