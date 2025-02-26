@@ -2,37 +2,27 @@ package main
 
 import (
 	"fmt"
+	"log"
+
+	"greetings/greetings"
 )
 
 func main() {
-	type User struct {
-		firstName string
-		lastName  string
-		age       int
-		birthDate string
+	// Set properties of the predefined Logger, including
+	// the log entry prefix and a flag to disable printing
+	// the time, source file, and line number.
+	log.SetPrefix("greetings: ")
+	log.SetFlags(0)
+
+	// Request a greeting message.
+	message, err := greetings.Hello("Pavel")
+	// If an error was returned, print it to the console and
+	// exit the program.
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	dataUser := User{"Pavel", "lysov", 29, "15/07/1995"}
-	fmt.Println("im:", dataUser.firstName, dataUser.age, dataUser.lastName, dataUser.birthDate)
-
-	fmt.Println("Hello my age", dataUser.age)
-
-	dataUser.age = 12
-	fmt.Println("Hello my age", dataUser.age)
-
-	dataUser.firstName = "asd"
-	fmt.Println(dataUser)
-
-	dataGuest := struct {
-		firstName     string
-		lastName      string
-		age, dayVisit int
-	}{
-		"guest name",
-		"",
-		22,
-		29,
-	}
-
-	fmt.Println(dataGuest)
+	// If no error was returned, print the returned message
+	// to the console.
+	fmt.Println(message)
 }
