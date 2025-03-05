@@ -2,27 +2,26 @@ package main
 
 import (
 	"fmt"
-	"log"
-
-	"greetings/greetings"
 )
 
 func main() {
-	// Set properties of the predefined Logger, including
-	// the log entry prefix and a flag to disable printing
-	// the time, source file, and line number.
-	log.SetPrefix("greetings: ")
-	log.SetFlags(0)
+	myArray := [3]int{1, 2, 3}
+	fmt.Println(myArray[2])
 
-	// Request a greeting message.
-	message, err := greetings.Hello("Gladys")
-	// If an error was returned, print it to the console and
-	// exit the program.
-	if err != nil {
-		log.Fatal(err)
+	for i := 0; i < len(myArray); i++ {
+		item := myArray[i]
+		fmt.Println("test a", item)
 	}
 
-	// If no error was returned, print the returned message
-	// to the console.
-	fmt.Println(message)
+	for i := 0; i < 10; i++ {
+		item := myArray[i]
+		fmt.Println("test b", item)
+	}
+
+	myArray2 := [...]int{1, 2, 3, 4, 5, 6, 7}
+
+	for i := 0; i < 10; i++ {
+		item := myArray2[i]
+		fmt.Println("test c", item)
+	}
 }
