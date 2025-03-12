@@ -2,28 +2,38 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
+const IMTPower = 2
+
 func main() {
-	//  myMap := make(map[string]int);
+	fmt.Println("___ Калькулятор индекса текста ___")
 
-	myMap := map[string]int{
-		"item1": 1,
-		"item2": 2,
-		"item3": 3,
-	}
+	userKg, userHeight := getUserInput()
+	IMT := calculateIMT(userKg, userHeight)
+	outputResult(IMT)
+}
 
-	fmt.Println(myMap["item1"])
+func outputResult(IMT float64) {
+	result := fmt.Sprintf("Ваш индекс массы тела: %.0f", IMT)
+	fmt.Print(result)
+}
 
-	delete(myMap, "item2")
+func calculateIMT(userKg, userHeight float64) float64 {
+	IMT := userKg / math.Pow(userHeight/100, IMTPower)
+	return IMT
+}
 
-	fmt.Println(myMap["item2"])
+func getUserInput() (float64, float64) {
+	var userHeight float64
+	var userKg float64
 
-	myMap["item2"] = 222
+	fmt.Print("Введите свой рост в см: ")
+	fmt.Scan(&userHeight)
 
-	fmt.Println(myMap["item2"])
+	fmt.Print("Введите свой вес: ")
+	fmt.Scan(&userKg)
 
-	for key, value := range myMap {
-		fmt.Println(key, value)
-	}
+	return userKg, userHeight
 }
